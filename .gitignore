@@ -1,0 +1,7 @@
+.vs/
+bin/
+obj/
+packages/
+books_concordance.VC.db
+books_concordance.VC.VC.opendb
+output/

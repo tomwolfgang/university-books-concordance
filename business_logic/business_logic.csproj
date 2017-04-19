@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AAB5CBFB-D87F-40C8-B128-0DB9153C99E3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>books.business_logic</RootNamespace>
+    <AssemblyName>business_logic</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.6.9.9\lib\net45\MySql.Data.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="business_logic.cs" />
+    <Compile Include="business_logic_delegate.cs" />
+    <Compile Include="common\configuration.cs" />
+    <Compile Include="data_access_layer\contains_dao.cs" />
+    <Compile Include="data_access_layer\dao_utils.cs" />
+    <Compile Include="data_access_layer\documents_dao.cs" />
+    <Compile Include="data_access_layer\groups_dao.cs" />
+    <Compile Include="data_access_layer\phrases_dao.cs" />
+    <Compile Include="data_access_layer\relations_dao.cs" />
+    <Compile Include="data_access_layer\statistics_dao.cs" />
+    <Compile Include="data_access_layer\words_dao.cs" />
+    <Compile Include="export_import.cs" />
+    <Compile Include="groups.cs" />
+    <Compile Include="models\contains.cs" />
+    <Compile Include="models\document.cs" />
+    <Compile Include="models\document_property.cs" />
+    <Compile Include="models\group.cs" />
+    <Compile Include="models\internal_phrase.cs" />
+    <Compile Include="models\location_detail.cs" />
+    <Compile Include="models\phrase.cs" />
+    <Compile Include="models\relation.cs" />
+    <Compile Include="models\stats.cs" />
+    <Compile Include="models\word.cs" />
+    <Compile Include="models\word_location_details.cs" />
+    <Compile Include="models\word_location_property.cs" />
+    <Compile Include="phrases.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="queries.cs" />
+    <Compile Include="relations.cs" />
+    <Compile Include="services\contains_service.cs" />
+    <Compile Include="services\database_connection_service.cs" />
+    <Compile Include="services\documents_service.cs" />
+    <Compile Include="services\global_paramaters_service.cs" />
+    <Compile Include="services\groups_service.cs" />
+    <Compile Include="services\phrases_service.cs" />
+    <Compile Include="services\relations_service.cs" />
+    <Compile Include="services\statistics_service.cs" />
+    <Compile Include="services\threading_service.cs" />
+    <Compile Include="services\words_service.cs" />
+    <Compile Include="common\thread_worker_queue.cs" />
+    <Compile Include="statistics.cs" />
+    <Compile Include="stats_updates.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\document_parser\document_parser.csproj">
+      <Project>{B79E4414-F67D-47F3-819B-6F9AAE7ECF62}</Project>
+      <Name>document_parser</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
