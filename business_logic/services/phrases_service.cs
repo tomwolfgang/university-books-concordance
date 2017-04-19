@@ -133,21 +133,29 @@ namespace books.business_logic.services {
 
       // now check which phrase contains all our words
       foreach (var containsPhrase in phraseContainsMap.Values) {
-        int index = 0;
-        if (ContainsPhraseEqualsPhrase(containsPhrase, phrase, out index)) {
+        int startIndex = 0;
+        int foundIndex = 0;
+        // we have a while to support sentences that have our phrase more than
+        // once in them
+        while (ContainsPhraseEqualsPhrase(containsPhrase, 
+                                          startIndex, 
+                                          phrase, 
+                                          out foundIndex)) {
           Tuple<LocationDetail, LocationDetail> pair = 
             new Tuple<LocationDetail, LocationDetail>(
               new LocationDetail() { 
                 Document = DocumentsService.Instance.GetById(
                   containsPhrase[0].DocumentId),
-                Location = containsPhrase[index]
+                Location = containsPhrase[foundIndex]
               }, 
               new LocationDetail() {
                 Document = DocumentsService.Instance.GetById(
                   containsPhrase[0].DocumentId),
-                Location = containsPhrase[index+phrase.Words.Count-1]
+                Location = containsPhrase[foundIndex + phrase.Words.Count-1]
               });
           result.Add(pair);
+
+          startIndex = foundIndex + phrase.Words.Count;
         }
       }
 
@@ -160,26 +168,28 @@ namespace books.business_logic.services {
     // find the next "first wordId" and do the same - until we find it or 
     // reach the end
     private bool ContainsPhraseEqualsPhrase(List<Contains> containsPhrase, 
+                                            int startIndex,
                                             Phrase phrase,
-                                            out int index) {
+                                            out int foundIndex) {
       if (containsPhrase.Count < phrase.Words.Count) {
-        index = -1;
+        foundIndex = -1;
         return false;
       }
 
-      for (index = 0; index < containsPhrase.Count; ++index) {
-        if (containsPhrase[index].WordId == phrase.Words[0].Id) {
+      foundIndex = startIndex;
+      for (; foundIndex < containsPhrase.Count; ++foundIndex) {
+        if (containsPhrase[foundIndex].WordId == phrase.Words[0].Id) {
           bool match = true;
-          Contains currentWord = containsPhrase[index];
+          Contains currentWord = containsPhrase[foundIndex];
           // now we iterate all the other words following the first one to see
           // if we have a match
           for (int j = 1; j < phrase.Words.Count; ++j) {
             // did we reach the end?
-            if (index + j >= containsPhrase.Count) {
+            if (foundIndex + j >= containsPhrase.Count) {
               return false;
             }
         
-            Contains nextWord = containsPhrase[index + j];
+            Contains nextWord = containsPhrase[foundIndex + j];
             if ((nextWord.WordId != phrase.Words[j].Id) ||
                (nextWord.IndexInSentence != (currentWord.IndexInSentence + 1))){
               // we don't have a matching word or the words aren't in sequence
