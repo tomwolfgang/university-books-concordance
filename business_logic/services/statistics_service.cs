@@ -34,7 +34,7 @@ namespace books.business_logic.services {
     //--------------------------------------------------------------------------
     public List<Tuple<Word, uint>> GetWordFrequencies() {
       int limit = 
-        GlobalParamatersService.Configuration.StatisticsWordFrequenciesLimit;
+        GlobalParamatersService.Configuration.Statistics.WordFrequenciesLimit;
 
       List<Tuple<long, uint>> wordIdsFrequencies = 
         StatisticsDao.GetWordFrequencies(limit);

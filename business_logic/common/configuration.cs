@@ -17,7 +17,19 @@ namespace books.business_logic.common {
     public uint Delta {
       get;set;
     }
+  }
 
+  //----------------------------------------------------------------------------
+  public class Statistics {
+    // how many words to return for word frequencies query
+    public int WordFrequenciesLimit {
+      get; set;
+    }
+
+    // how many lines (or sentences) do we retrieve sorrounding our word
+    public int LongQueriesTimeoutInSeconds {
+      get; set;
+    }
   }
 
   //----------------------------------------------------------------------------
@@ -41,7 +53,7 @@ namespace books.business_logic.common {
       get; set; 
     }
 
-    public int StatisticsWordFrequenciesLimit {
+    public Statistics Statistics {
       get; set;
     }
   }

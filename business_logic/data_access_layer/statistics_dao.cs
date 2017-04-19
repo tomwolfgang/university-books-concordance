@@ -195,6 +195,10 @@ namespace books.business_logic.data_access_layer {
         MySqlCommand cmd = new MySqlCommand(
           query,
           DatabaseConnectionService.Instance.Connection);
+        cmd.CommandTimeout = 
+          GlobalParamatersService.Configuration
+                                 .Statistics
+                                 .LongQueriesTimeoutInSeconds;
 
         reader = cmd.ExecuteReader();
 
