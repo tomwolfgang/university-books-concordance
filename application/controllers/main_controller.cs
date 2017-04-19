@@ -21,6 +21,7 @@ namespace application.controllers {
     private LoadingScreenDialog _currentLoadingScreen = null;
 
     private readonly int kDefaultWordFrequenciesLimit = 20;
+    private readonly int kDefaultLongQueriesTimeoutInSeconds = 300; // 5 min
 
     //--------------------------------------------------------------------------
     public MainController(MainDialog parentForm) {
@@ -42,7 +43,7 @@ namespace application.controllers {
           ConfigurationSettings.AppSettings["storage_folder"]),
         ContentRetreivalResolution = InitContentRetreivalSettings(),
         PerformIntegrityValidations = ShouldPerformIntegirtyValidations(),
-        StatisticsWordFrequenciesLimit = GetStatisticsWordFrequenciesLimit()
+        Statistics = GetStatisticsConfigurations()
 #pragma warning restore CS0618
       };
 
@@ -409,14 +410,41 @@ namespace application.controllers {
     //--------------------------------------------------------------------------
     private int GetStatisticsWordFrequenciesLimit() {
       int result = kDefaultWordFrequenciesLimit;
-#pragma warning disable CS0618
+      
+      #pragma warning disable CS0618
       Int32.TryParse(
         ConfigurationSettings.AppSettings["statistics.word_frequencies.limit"],
         out result);
-#pragma warning restore CS0618
+      #pragma warning restore CS0618
 
       return result;
     }
+
+    //--------------------------------------------------------------------------
+    private int GetStatisticsLongQueriesTimeout() {
+      int result = kDefaultLongQueriesTimeoutInSeconds;
+     
+      #pragma warning disable CS0618
+      Int32.TryParse(
+        ConfigurationSettings.AppSettings[
+          "statistics.long_queries_timeout_in_seconds"],
+        out result);
+      #pragma warning restore CS0618
+
+      return result;
+    }
+
+    //--------------------------------------------------------------------------
+    private books.business_logic.common.Statistics GetStatisticsConfigurations() {
+      books.business_logic.common.Statistics result = 
+        new books.business_logic.common.Statistics();
+      
+      result.WordFrequenciesLimit = GetStatisticsWordFrequenciesLimit();
+      result.LongQueriesTimeoutInSeconds = GetStatisticsLongQueriesTimeout();
+
+      return result;
+    }
+
 
   }
 }
