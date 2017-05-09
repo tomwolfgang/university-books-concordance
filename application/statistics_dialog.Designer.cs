@@ -26,7 +26,7 @@
       this.groupBoxTopWords = new System.Windows.Forms.GroupBox();
       this.label1 = new System.Windows.Forms.Label();
       this.listViewWordFrequencies = new System.Windows.Forms.ListView();
-      this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.columnHeader0 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.lblWordsPerSentence = new System.Windows.Forms.Label();
       this.lblWordsPerLine = new System.Windows.Forms.Label();
@@ -40,6 +40,7 @@
       this.lblCharsPerSentence = new System.Windows.Forms.Label();
       this.lblCharsPerPage = new System.Windows.Forms.Label();
       this.lblCharsPerParagraph = new System.Windows.Forms.Label();
+      this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.groupBoxTopWords.SuspendLayout();
       this.groupBox1.SuspendLayout();
       this.groupBox2.SuspendLayout();
@@ -50,9 +51,9 @@
       this.groupBoxTopWords.Controls.Add(this.label1);
       this.groupBoxTopWords.Controls.Add(this.listViewWordFrequencies);
       this.groupBoxTopWords.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.groupBoxTopWords.Location = new System.Drawing.Point(75, 268);
+      this.groupBoxTopWords.Location = new System.Drawing.Point(68, 268);
       this.groupBoxTopWords.Name = "groupBoxTopWords";
-      this.groupBoxTopWords.Size = new System.Drawing.Size(650, 373);
+      this.groupBoxTopWords.Size = new System.Drawing.Size(679, 373);
       this.groupBoxTopWords.TabIndex = 0;
       this.groupBoxTopWords.TabStop = false;
       this.groupBoxTopWords.Text = "Top Words (0):";
@@ -61,7 +62,7 @@
       // 
       this.label1.AutoSize = true;
       this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label1.Location = new System.Drawing.Point(536, 0);
+      this.label1.Location = new System.Drawing.Point(554, 0);
       this.label1.Name = "label1";
       this.label1.Size = new System.Drawing.Size(100, 18);
       this.label1.TabIndex = 1;
@@ -70,26 +71,27 @@
       // listViewWordFrequencies
       // 
       this.listViewWordFrequencies.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader0,
             this.columnHeader1,
             this.columnHeader2});
       this.listViewWordFrequencies.FullRowSelect = true;
       this.listViewWordFrequencies.Location = new System.Drawing.Point(7, 30);
       this.listViewWordFrequencies.MultiSelect = false;
       this.listViewWordFrequencies.Name = "listViewWordFrequencies";
-      this.listViewWordFrequencies.Size = new System.Drawing.Size(637, 337);
+      this.listViewWordFrequencies.Size = new System.Drawing.Size(667, 337);
       this.listViewWordFrequencies.TabIndex = 0;
       this.listViewWordFrequencies.UseCompatibleStateImageBehavior = false;
       this.listViewWordFrequencies.View = System.Windows.Forms.View.Details;
       this.listViewWordFrequencies.DoubleClick += new System.EventHandler(this.listViewWordFrequencies_DoubleClick);
       // 
-      // columnHeader1
+      // columnHeader0
       // 
-      this.columnHeader1.Text = "Word";
-      this.columnHeader1.Width = 340;
+      this.columnHeader0.Text = "Word";
+      this.columnHeader0.Width = 270;
       // 
       // columnHeader2
       // 
-      this.columnHeader2.Text = "Appearance";
+      this.columnHeader2.Text = "Frequency";
       this.columnHeader2.Width = 100;
       // 
       // lblWordsPerSentence
@@ -222,6 +224,11 @@
       this.lblCharsPerParagraph.TabIndex = 3;
       this.lblCharsPerParagraph.Text = "Per Paragraph: Retreiving...";
       // 
+      // columnHeader1
+      // 
+      this.columnHeader1.Text = "Rank";
+      this.columnHeader1.Width = 100;
+      // 
       // StatisticsDialog
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -252,7 +259,7 @@
 
     public System.Windows.Forms.GroupBox groupBoxTopWords;
     public System.Windows.Forms.ListView listViewWordFrequencies;
-    private System.Windows.Forms.ColumnHeader columnHeader1;
+    private System.Windows.Forms.ColumnHeader columnHeader0;
     private System.Windows.Forms.ColumnHeader columnHeader2;
     public System.Windows.Forms.Label lblWordsPerSentence;
     public System.Windows.Forms.Label lblWordsPerLine;
@@ -267,5 +274,6 @@
     public System.Windows.Forms.Label lblCharsPerSentence;
     public System.Windows.Forms.Label lblCharsPerPage;
     public System.Windows.Forms.Label lblCharsPerParagraph;
+    private System.Windows.Forms.ColumnHeader columnHeader1;
   }
 }

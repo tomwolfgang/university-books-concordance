@@ -143,14 +143,20 @@ namespace application.controllers {
       _parentForm.Invoke((MethodInvoker)delegate {
         _parentForm.listViewWordFrequencies.Items.Clear();
 
+        int rank = 1;
         foreach (var item in frequencies) {
           ListViewItem listViewItem = new ListViewItem();
           listViewItem.Text = item.Item1.Value;
+          listViewItem.SubItems.Add(rank.ToString(
+            "N0",
+            CultureInfo.InvariantCulture));
           listViewItem.SubItems.Add(item.Item2.ToString(
             "N0",
             CultureInfo.InvariantCulture));
           listViewItem.Tag = item.Item1;
           _parentForm.listViewWordFrequencies.Items.Add(listViewItem);
+
+          rank++;
         }
 
         UpdateWordFrequenciesCount();
