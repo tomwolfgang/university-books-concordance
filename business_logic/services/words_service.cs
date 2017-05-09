@@ -74,6 +74,9 @@ namespace books.business_logic.services {
     //--------------------------------------------------------------------------
     public void CreateTable() {
       WordsDao.CreateTable();
+      _wordIdIndex.Clear();
+      _wordIndex.Clear();
+      _words.Clear();
     }
 
     //--------------------------------------------------------------------------
@@ -113,6 +116,7 @@ namespace books.business_logic.services {
       WordsDao.DropTable();
       _wordIdIndex.Clear();
       _wordIndex.Clear();
+      _words.Clear();
     }
 
     //--------------------------------------------------------------------------
@@ -151,6 +155,7 @@ namespace books.business_logic.services {
     public void Import(XmlDocument document) {
       _wordIndex.Clear();
       _wordIdIndex.Clear();
+      _words.Clear();
 
       GlobalParamatersService.Delegate.OnDatabaseImportProgress(0);
 
@@ -162,6 +167,7 @@ namespace books.business_logic.services {
 
         foreach (XmlNode xmlWord in xmlWords) {
           Word word = WordsDao.Import(xmlWord);
+          _words.Add(word);
           IndexWord(word);
 
           processed++;
