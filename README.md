@@ -27,7 +27,7 @@ changing/removing these ’)
 # Getting Started
 - You need Visual Studio 2015 (express is good enough) and the project uses 
 NuGet for dependencies
-- You also need Java JRE 8 - otherwise you might get an error such as "failed to
+- You also need Java JRE 8 (32bit) - otherwise you might get an error such as "failed to
   initialize CoreNLP"
 - Install MySql server (community edition is good enough)
 - Create a new (empty) schema called: books (can be any name)
