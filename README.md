@@ -8,13 +8,20 @@ help parsing documents.
 - At first I had time to create clean code - but as the project 
 deadline approached, as usual, I had to take some (many) shortcuts.
 
-- Use it at your own risk - I am not reliable for anything ;)
+- Use it at your own risk - I am not reliable for anything
 
 - If you do use it for your own University project - please don't just change 
 variables and submit - because you will be caught...  Use it only to help you
 understand how one may approach such a task.
 
 - Why .NET (C#) and not Java?  Good question - mainly to ease the UI development
+
+# Screenshots
+
+![Loading documents](/screenshots/loading.jpg?raw=true "Loading documents")
+![Words Inspector](/screenshots/words_inspector.jpg?raw=true "Words Inspector")
+![Stats](/screenshots/stats.jpg?raw=true "Stats")
+![Phrases](/screenshots/phrases_inspector.jpg?raw=true "Phrases")
 
 # Open Issues
 - books with a . (period) in their names will not be loaded (fix by 
